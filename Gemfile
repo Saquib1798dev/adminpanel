@@ -56,9 +56,24 @@ gem 'activeadmin'
 
 # Plus integrations with:
 gem 'devise'
+gem 'devise-jwt'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 gem 'arctic_admin'
 gem 'activeadmin_quill_editor'
 gem 'ancestry'
+
+
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'rack-cors'
+gem 'ancestry'
+
+
+#active admin
+gem 'activeadmin'
+# gem 'arctic_admin'
+# gem 'activeadmin_quill_editor'
+#gem 'ancestry'
+gem 'razorpay'

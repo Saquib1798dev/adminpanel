@@ -1,3 +1,10 @@
-class ApplicationController < ActionController::Base
-  # config.middleware.use ActionDispatch::Flash
+class ApplicationController <  ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
+ # include ActionView::Layouts
+  
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit :sign_in, keys: [:login, :password]
+  end
 end

@@ -26,7 +26,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: micro_services_dev
+  database: micro_services_dev_heroku_5
   username: postgres
   password: postgres
   host: localhost
