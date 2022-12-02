@@ -1,4 +1,4 @@
-json.items @items do |item|
+json.data @items do |item|
   json.item item
   json.item_image item.images_url("#{request.protocol}#{request.host_with_port}") if item.item_image.present?
   json.category item.category

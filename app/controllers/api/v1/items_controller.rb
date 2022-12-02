@@ -8,7 +8,6 @@ module Api
       def index
         @items = FilterItemService.call(params[:search])
         @items = @items.order("#{sort_column} #{sort_direction}")
-        render json: {data: @items, success: true}
       end
 
       def show

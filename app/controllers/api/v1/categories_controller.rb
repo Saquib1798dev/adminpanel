@@ -6,11 +6,9 @@ module Api
 
       def index
         @categories = Category.all.order("#{sort_column} #{sort_direction}")
-        render json: {data: @categories, success: true}
       end
 
       def show
-        render json:{data: @category, success: true}
       end
 
       private 
