@@ -331,6 +331,8 @@ ActiveAdmin.setup do |config|
   # By default, Active Admin uses Sprocket's asset pipeline.
   # You can switch to using Webpacker here.
   #
+  ###config.logout_link_path = :destroy_user_session_path
+  config.logout_link_method = :delete
   # config.use_webpacker = true
   meta_tags_options = { viewport: 'width=device-width, initial-scale=1' }
   config.meta_tags = meta_tags_options

@@ -319,6 +319,7 @@ Devise.setup do |config|
     ]
     jwt.expiration_time = 120.minutes.to_i
   end
+  config.omniauth :google_oauth2, "#{Rails.application.credentials.dig(:google, :client_id)}", "#{ Rails.application.credentials.dig(:google, :client_secret)}", {}
   config.warden do |manager|
     manager.failure_app = Devise::ApiFailureApp
   end 

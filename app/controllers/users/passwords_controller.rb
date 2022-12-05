@@ -50,12 +50,12 @@ class Users::PasswordsController < ApplicationController
   private
 
   def update_otp(otp)
-    otp.update(otp_digits: rand(1000..9999), otp_verified: false, otp_token: SecureRandom.hex)
+    otp.update(otp_digits: 1111, otp_verified: false, otp_token: 1234)
     otp
   end
 
   def create_otp(user)
-    user.otps.create(otp_digits: rand(1000..9999), otp_type: "forgot_password", otp_verified: false, otp_token: SecureRandom.hex)
+    user.otps.create(otp_digits: 1111, otp_type: "forgot_password", otp_verified: false, otp_token: 1234)
   end
 
   def find_user

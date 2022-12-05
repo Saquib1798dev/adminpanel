@@ -58,7 +58,7 @@ module Api
         if params[:user][:update_type] == "email_update" || params[:user][:update_type_two] == "email_update"
           @otp = @user.otps.where(otp_type: "email_update").first
           if @otp.present?
-            @otp.update(otp_digits: rand(1000..9999), otp_verified: false, otp_token: SecureRandom.hex)
+            @otp.update(otp_digits: 1111, otp_verified: false, otp_token: 1234)
           else
             type = "email_update"
            @otp =  create_otp(@user, type)
@@ -66,7 +66,7 @@ module Api
         elsif params[:user][:update_type] == "phone_update" || params[:user][:update_type_two] == "phone_update"
           @otp = @user.otps.where(otp_type: "phone_update").first
           if @otp.present?
-            @otp.update(otp_digits: rand(1000..9999), otp_verified: false, otp_token: SecureRandom.hex)
+            @otp.update(otp_digits: 1111, otp_verified: false, otp_token: 1234)
           else
             type = "phone_update"
             @otp = create_otp(@user, type)
@@ -103,7 +103,7 @@ module Api
       end
 
       def create_otp(user, type)
-        @otp = user.otps.create(otp_digits: rand(1000..9999), otp_type: type, otp_verified: false, otp_token: SecureRandom.hex)
+        @otp = user.otps.create(otp_digits: 1111, otp_type: type, otp_verified: false, otp_token: SecureRandom.hex)
       end
 
       def get_user

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   }
   post 'users/forgot_password' => "users/passwords#forgot"
   post 'users/reset_password' => "users/passwords#reset"
+  get 'users/help_portals' => "users/help_portals#index"
  # get 'users/verify_otp' => "users/passwords#verify_otp"
   match 'users/verify_otp' => 'users/passwords#verify_otp', via: [:get]
 
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
         post 'create_order'
         post 'verify_payment_state'
       end
+      get 'social_media_users/google_auth2' => "social_media_users#google_oauth2", as: 'google_auth'
       resources :items
       resources :categories
       resources :user_details do 

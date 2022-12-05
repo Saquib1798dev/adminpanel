@@ -78,3 +78,6 @@ gem 'activeadmin'
 # gem 'activeadmin_quill_editor'
 #gem 'ancestry'
 gem 'razorpay'
+gem "omniauth-google-oauth2"
+gem 'omniauth'
+gem 'httparty'
