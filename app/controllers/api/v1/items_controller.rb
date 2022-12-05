@@ -3,6 +3,7 @@ module Api
     class ItemsController < ApplicationController
       skip_before_action :verify_authenticity_token
       before_action :get_item, only: [:show]
+      before_action :get_user, only: [:index]
       
 
       def index
@@ -29,6 +30,10 @@ module Api
 
       def get_item
         @item = Item.find(params[:id])
+      end
+
+      def get_user
+        @user = User.find(params["user_id"])
       end
 
     end
