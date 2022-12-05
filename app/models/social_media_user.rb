@@ -3,7 +3,7 @@ class SocialMediaUser < User
     email = data["email"]
     if User.find_by_email(email).nil?
       
-      User.create!(email: email, password: )
+      User.create!(email: email, password: 1234)
     else
       return true
     end
