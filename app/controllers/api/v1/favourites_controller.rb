@@ -32,8 +32,7 @@ module Api
       end
 
       def list
-        items = @user.favourite,items
-        render json: {data: items, success: :true }
+        @items = @user.favourite.items
       end
 
       def get_favourite
