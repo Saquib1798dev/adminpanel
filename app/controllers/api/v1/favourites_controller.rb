@@ -2,8 +2,8 @@ module Api
   module V1
     class FavouritesController < ApplicationController
       skip_before_action :verify_authenticity_token
-      before_action :get_user, only: [:add]
-      before_action :get_favourite, only: [:remove,:list]
+      before_action :get_user, only: [:add, :list]
+      before_action :get_favourite, only: [:remove]
 
 
       def add
@@ -32,7 +32,7 @@ module Api
       end
 
       def list
-        items = @favourite.items
+        items = @user.favourite,items
         render json: {data: items, success: :true }
       end
 

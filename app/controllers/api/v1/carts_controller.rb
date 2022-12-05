@@ -20,7 +20,6 @@ module Api
         unless @user.cart.present?
           render json: { success: true, message: 'Cart is not present please create' }
         else
-          render json: {success: true, data: @user.cart}
         end
       end
 

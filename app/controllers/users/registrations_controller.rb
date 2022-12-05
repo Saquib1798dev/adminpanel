@@ -6,6 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
   before_action :configure_sign_up_params, only: [:create]
+  after_action :create_cart, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -60,6 +61,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:full_phone_number, :type, :email, :password, :full_name])
+  end
+
+  def create_cart
+    resource.build_cart.save!
   end
 
   # If you have extra params to permit, append them to the sanitizer.
