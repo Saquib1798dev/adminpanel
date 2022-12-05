@@ -8,10 +8,10 @@ module Api
       def google_oauth2
         url = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=#{params["token_id"]}"                  
         response = HTTParty.get(url)
-        user = SocialMediaUser.create_user_for_google(response.parsed_response)
-        token = user.password                      
-        user.save
-        render json: {account: user, token: token }
+        response = SocialMediaUser.create_user_for_google(response.parsed_response)
+        if response[:check] 
+          render json: {success: true, data: response[:data] }
+        end 
       end
     end
   end
