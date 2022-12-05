@@ -132,6 +132,18 @@ ActiveRecord::Schema.define(version: 2022_12_02_085820) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.integer "status"
+    t.string "order_number"
+    t.string "payment_order_id"
+    t.date "order_date"
+    t.integer "payment_status"
+    t.float "order_amount"
+    t.datetime "created_at"
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+  end
+
   create_table "otps", force: :cascade do |t|
     t.integer "otp_digits"
     t.boolean "otp_verified"
