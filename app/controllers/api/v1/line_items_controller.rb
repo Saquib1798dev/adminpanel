@@ -31,9 +31,12 @@ module Api
       end
 
       def reduce_quantity
-        @line_item.quantity -= 1 if @line_item.quantity > 1
-
-        return unless @line_item.save
+        if @line_item.quantity > 1
+          @line_item.quantity -= 1 
+          return unless @line_item.save
+        else
+          @line_item.delete
+        end
 
         render json: { success: true, data: @line_item, message: 'Items removed from cart' }
       end
