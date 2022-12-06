@@ -81,4 +81,4 @@ gem 'razorpay'
 gem "omniauth-google-oauth2"
 gem 'omniauth'
 gem 'httparty'
-gem 'aws-sdk-s3'
+# gem 'aws-sdk-s3'
