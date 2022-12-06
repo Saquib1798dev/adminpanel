@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       namespace :payments do
         post 'create_order'
         post 'verify_payment_state'
+        get 'show_order'
       end
       get 'social_media_users/google_auth2' => "social_media_users#google_oauth2", as: 'google_auth'
       resources :items
