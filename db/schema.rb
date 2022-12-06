@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2022_12_02_085820) do
     t.bigint "cart_id", null: false
     t.integer "status"
     t.string "order_number"
+    t.jsonb "order_summary"
     t.string "payment_order_id"
     t.date "order_date"
     t.integer "payment_status"
@@ -152,8 +153,8 @@ ActiveRecord::Schema.define(version: 2022_12_02_085820) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.index ["otp_digits"], name: "index_otps_on_otp_digits", unique: true
-    t.index ["otp_token"], name: "index_otps_on_otp_token", unique: true
+    # t.index ["otp_digits"], name: "index_otps_on_otp_digits", unique: true
+    # t.index ["otp_token"], name: "index_otps_on_otp_token", unique: true
     t.index ["user_id"], name: "index_otps_on_user_id"
   end
 
