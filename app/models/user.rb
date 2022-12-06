@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_many :otps, dependent: :destroy
   has_one :cart, dependent: :destroy
   has_one :favourite, dependent: :destroy
-
   include Devise::JWT::RevocationStrategies::JTIMatcher
   devise :database_authenticatable, :registerable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self, authentication_keys: [:login]
