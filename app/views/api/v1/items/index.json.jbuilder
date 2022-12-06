@@ -2,7 +2,7 @@ json.data @items do |item|
   json.item item
   favourite  = Favourite.where(user_id: @user.id).first
   item2 = favourite&.items&.where(id: item.id)&.first
-  if item.present?
+  if item2.present?
     json.added_in_wishlist true
   else
     json.added_in_wishlist false
