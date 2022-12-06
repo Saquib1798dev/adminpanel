@@ -44,7 +44,7 @@ module Api
         products.map do |product|
           item = Item.find_by_id(product["item_id"])
           product["item_image"] = nil
-          product["item_image"] = item.images_url("#{request.protocol}#{request.host_with_port}") if item.item_image.present?
+          product["item_image"] = item.item_image.service_url if item.item_image.present?
           product["name"] = item.name
           product["quantity"] = product["quantity"]
         end

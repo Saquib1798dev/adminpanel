@@ -13,8 +13,8 @@ class Item < ApplicationRecord
   scope :by_item_price, ->(value){ where("CAST(price AS TEXT) LIKE ?", "#{ value }%")}
   
   
-  def images_url(base_url = nil)
-    image_path = Rails.application.routes.url_helpers.rails_blob_path(self.item_image, only_path: true)
-    img = "#{base_url}#{image_path}"
-  end
+  # def images_url(base_url = nil)
+  #   image_path = self.item_image.service_url
+  #  # img = "#{base_url}#{image_path}"
+  # end
 end

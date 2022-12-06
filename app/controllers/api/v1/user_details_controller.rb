@@ -97,8 +97,8 @@ module Api
 
       def get_complete_image_url
         if @user.avatar.present?
-          @base_url = "#{request.protocol}#{request.host_with_port}"
-          @complete_image_url = @base_url+Rails.application.routes.url_helpers.rails_blob_path(@user.avatar, only_path: true)
+          # @base_url = "#{request.protocol}#{request.host_with_port}"
+          @complete_image_url = @user.avatar.service_url
         end 
       end
 

@@ -32,3 +32,10 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+amazon:
+  service: S3
+  access_key_id: 'AKIA5XZCASN4MVVOZFQI'
+  secret_access_key: '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'
+  region: 'ap-south-1'
+  bucket: 'ph-pharmacy'
