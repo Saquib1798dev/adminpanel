@@ -18,7 +18,7 @@ module Api
       end
 
       def verify_otp
-        otp = @user.otps.where(["otp_digits = ?", "#{params[:user][:otp]}"]).first
+        otp = @user.otps.where(["otp_type = ?", "#{params[:user][:type]}"]).first
         if otp.present?
           if update_email_or_phone_number(@user, otp)
             if otp.update(otp_verified: true)
@@ -103,27 +103,27 @@ module Api
       end
 
       def create_otp(user, type)
-        @otp = user.otps.create(otp_digits: 1111, otp_type: type, otp_verified: false, otp_token: SecureRandom.hex)
+        @otp = user.otps.create(otp_digits: 1111, otp_type: type, otp_verified: false, otp_token: 1234)
       end
 
       def get_user
         @user = User.find(params[:id])
       end
 
-      def authenticate
-        render json: { message: "Token Not present", success: false } and return if request.headers['authorization'].blank?
-        begin
-          data = JWT.decode(request.headers['authorization'].split(' ').last,"", false)
-        rescue StandardError => e
-          return render json: {message: "Invalid Token", success: false }
-        else
-          exp_time = Time.at(data[0]["exp"])
-          user = User.find(data[0]["sub"])
-          unless Time.now < exp_time
-            return  render json: { message: "Token Expired", success: false }
-          end
-        end 
-      end
+      # def authenticate
+      #   render json: { message: "Token Not present", success: false } and return if request.headers['authorization'].blank?
+      #   begin
+      #     data = JWT.decode(request.headers['authorization'].split(' ').last,"", false)
+      #   rescue StandardError => e
+      #     return render json: {message: "Invalid Token", success: false }
+      #   else
+      #     exp_time = Time.at(data[0]["exp"])
+      #     user = User.find(data[0]["sub"])
+      #     unless Time.now < exp_time
+      #       return  render json: { message: "Token Expired", success: false }
+      #     end
+      #   end 
+      # end
     end
   end
 end
