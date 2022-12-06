@@ -5,7 +5,7 @@ module Api
     # line items request
     class LineItemsController < ApplicationController
       skip_before_action :verify_authenticity_token
-      before_action :find_line_item, only: %i[add_quantity reduce_quantity]
+      before_action :find_line_item, only: %i[add_quantity reduce_quantity destroy]
       before_action :find_item_cart, only: %i[create]
 
       def create
@@ -39,6 +39,11 @@ module Api
         end
 
         render json: { success: true, data: @line_item, message: 'Items removed from cart' }
+      end
+
+      def destroy
+        @line_item.destroy!
+        render json: { success: true, message: 'Product Deleted' }
       end
 
       private

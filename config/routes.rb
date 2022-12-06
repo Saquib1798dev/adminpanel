@@ -31,7 +31,8 @@ Rails.application.routes.draw do
         post 'verify_otp', on: :member
         patch 'change_password', on: :member
       end
-      resources :carts
+      resources :carts 
+      delete '/line_items/:id' => 'line_items#destroy', as: 'remove_item'
       resources :line_items
       post 'line_items/:id/add' => 'line_items#add_quantity', as: 'line_item_add'
       post 'line_items/:id/reduce' => 'line_items#reduce_quantity', as: 'line_item_reduce'
@@ -45,5 +46,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :addresses
   end
+  root :to => redirect('/admin/login')
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

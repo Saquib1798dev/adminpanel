@@ -5,7 +5,7 @@ module Api
     # cart actions for show and destroy
     class CartsController < ApplicationController
       skip_before_action :verify_authenticity_token
-      before_action :find_cart, only: %i[show destroy]
+      before_action :find_cart, only: %i[show destroy_line_item]
       before_action :find_user, only: %i[create]
 
       def create
@@ -23,10 +23,11 @@ module Api
         end
       end
 
-      def destroy
-        @user.cart.destroy
-        render json: { success: true, message: 'Cart Deleted' }
-      end
+      # def destroy_line_item
+      #   debugger
+      #   @user.cart.line_items.find_by_id(params[:line_id]).destroy!
+      #   render json: { success: true, message: 'Product Deleted' }
+      # end
 
       private
 
