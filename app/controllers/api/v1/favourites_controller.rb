@@ -32,6 +32,7 @@ module Api
       end
 
       def list
+        @favourite = @user.favourite
         @items = @user.favourite.items
       end
 

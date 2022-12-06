@@ -1,3 +1,4 @@
+json.favourite_id @favourite.id
 json.data @items do |item|
   json.item item
   json.price item&.price
